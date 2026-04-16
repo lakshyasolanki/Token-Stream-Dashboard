@@ -1,73 +1,43 @@
-# React + TypeScript + Vite
+# 🪙 Token Stream Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, real-time cryptocurrency dashboard built with React, TypeScript, and Vite. This project is designed to handle high-frequency WebSocket data streams with a focus on performance, resilience, and battery efficiency.
 
-Currently, two official plugins are available:
+## 📺 Demo
+![Token Stream Dashboard Demo](public/assets/demo.mov)
+*(Note: If the video doesn't play directly, you can find it in `public/assets/demo.mov`)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🚀 Project Overview
 
-## React Compiler
+The Token Stream Dashboard is not just a simple crypto tracker; it's an exploration of high-frequency data handling in the browser. It implements a sophisticated data pipeline to ensure the UI remains fluid even when receiving 50+ updates per second.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🧠 The Brain (State Management)
+Uses **Zustand** for centralized state management, focusing on a clear data flow. It manages token data, sorted symbols, and connection statuses, ensuring that the UI reacts predictably to state changes.
 
-## Expanding the ESLint configuration
+### 💖 The Heart (Buffered WebSocket)
+At the core is a **Buffered WebSocket pipeline**:
+- **Data Coalescing:** High-frequency updates are held in a buffer (Map).
+- **Batch Flushing:** The buffer is flushed to the store every 200ms, preventing unnecessary UI re-renders and "chatter."
+- **Resilience:** Implements an exponential backoff strategy with jitter to handle network failures and prevent "Thundering Herd" issues.
+- **Teardown System:** Aggressively manages resources by closing connections and clearing timers when the tab is hidden or the component unmounts to save battery and memory.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 🏗️ The Body (Performance Rendering)
+To achieve maximum performance, the dashboard employs a **Direct-to-DOM** rendering strategy:
+- **Virtual DOM Bypass:** While the static parts of the `TokenCard` are managed by React, the "hot" data (prices) are updated via `refs` and `innerText` directly, bypassing the React reconciliation process.
+- **GPU-Accelerated Animations:** Visual "flashes" for price changes are handled by CSS animations on the GPU, keeping the CPU free for data processing.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 🛠️ Known Flaws & Future Improvements
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+While the core architecture is solid, there are several areas identified for future development:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+- **List Virtualization:** Currently, the `TokenList` renders all cards. As the number of tokens grows, implementing virtualization (e.g., `react-window`) will be necessary to maintain performance.
+- **Advanced Jitter:** Refining the exponential backoff with more sophisticated jitter to further protect the backend from reconnection storms.
+- **Enhanced Visibility Logic:** Further optimizing the WebSocket state when the tab is throttled by the browser in the background.
+- **Historical Data:** Adding sparkline history beyond the live stream for a more complete market overview.
+- **Dynamic Formatting:** Improving the decimal handling for ultra-low-priced "meme" tokens vs. high-priced assets like BTC.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tech Stack
+- **Framework:** React 18
+- **Build Tool:** Vite
+- **State:** Zustand
+- **Styling:** CSS3 (GPU-accelerated animations)
+- **Language:** TypeScript

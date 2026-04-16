@@ -1,0 +1,35 @@
+export const SYMBOLS = [
+  'BTCUSDT', 'ETHUSDT', 'SOLUSDT', 'BNBUSDT', 'XRPUSDT',
+  'ADAUSDT', 'AVAXUSDT', 'DOGEUSDT', 'MATICUSDT',
+  'LINKUSDT', 'UNIUSDT', 'XLMUSDT',
+  'NEARUSDT', 'FILUSDT', 'VETUSDT',
+  'FTMUSDT', 'SANDUSDT', 'MANAUSDT', 'THETAUSDT',
+  'EGLDUSDT', 'FLOWUSDT', 'EOSUSDT', 'AAVEUSDT',
+];
+
+// Display names and logo URLs for each token
+export const TOKEN_INFO: Record<string, { name: string; logo: string; theme: string }> = {
+  BTCUSDT: { name: 'Bitcoin', logo: 'https://assets.coingecko.com/coins/images/1/small/bitcoin.png', theme: 'bg-orange-400' },
+  ETHUSDT: { name: 'Ethereum', logo: 'https://assets.coingecko.com/coins/images/279/small/ethereum.png', theme: 'bg-indigo-400' },
+  SOLUSDT: { name: 'Solana', logo: 'https://assets.coingecko.com/coins/images/4128/small/solana.png', theme: 'bg-purple-400' },
+  BNBUSDT: { name: 'BNB', logo: 'https://assets.coingecko.com/coins/images/825/small/bnb-icon2_2x.png', theme: 'bg-yellow-400' },
+  XRPUSDT: { name: 'XRP', logo: 'https://assets.coingecko.com/coins/images/44/small/xrp-symbol-white-128.png', theme: 'bg-blue-400' },
+  ADAUSDT: { name: 'Cardano', logo: 'https://assets.coingecko.com/coins/images/975/small/cardano.png', theme: 'bg-blue-600' },
+  AVAXUSDT: { name: 'Avalanche', logo: 'https://assets.coingecko.com/coins/images/12559/small/Avalanche_Circle_RedWhite_Trans.png', theme: 'bg-red-500' },
+  DOGEUSDT: { name: 'Dogecoin', logo: 'https://assets.coingecko.com/coins/images/5/small/dogecoin.png', theme: 'bg-yellow-500' },
+  MATICUSDT: { name: 'Polygon', logo: 'https://assets.coingecko.com/coins/images/4713/small/matic-token-icon.png', theme: 'bg-purple-600' },
+  LINKUSDT: { name: 'Chainlink', logo: 'https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png', theme: 'bg-blue-700' },
+  UNIUSDT: { name: 'Uniswap', logo: 'https://assets.coingecko.com/coins/images/12504/small/uniswap-uni.png', theme: 'bg-pink-400' },
+  XLMUSDT: { name: 'Stellar', logo: 'https://assets.coingecko.com/coins/images/100/small/Stellar_symbol_black_RGB.png', theme: 'bg-white' },
+  NEARUSDT: { name: 'NEAR', logo: 'https://assets.coingecko.com/coins/images/10365/small/near.jpg', theme: 'bg-slate-600' },
+  FILUSDT: { name: 'Filecoin', logo: 'https://assets.coingecko.com/coins/images/12817/small/filecoin.png', theme: 'bg-blue-300' },
+  VETUSDT: { name: 'VeChain', logo: 'https://assets.coingecko.com/coins/images/1167/small/VeChain-Logo-768x725.png', theme: 'bg-blue-400' },
+  FTMUSDT: { name: 'Fantom', logo: 'https://assets.coingecko.com/coins/images/4001/small/Fantom_round.png', theme: 'bg-blue-500' },
+  SANDUSDT: { name: 'Sandbox', logo: 'https://assets.coingecko.com/coins/images/12129/small/sandbox_logo.jpg', theme: 'bg-blue-400' },
+  MANAUSDT: { name: 'Decentraland', logo: 'https://assets.coingecko.com/coins/images/878/small/decentraland-mana.png', theme: 'bg-red-400' },
+  THETAUSDT: { name: 'Theta', logo: 'https://assets.coingecko.com/coins/images/2538/small/theta-token-logo.png', theme: 'bg-blue-200' },
+  EGLDUSDT: { name: 'MultiversX', logo: 'https://assets.coingecko.com/coins/images/12335/small/egld-token-logo.png', theme: 'bg-slate-800' },
+  FLOWUSDT: { name: 'Flow', logo: 'https://assets.coingecko.com/coins/images/13446/small/5f6294c0c7a8cda55cb1c936_Flow_Wordmark.png', theme: 'bg-emerald-400' },
+  EOSUSDT: { name: 'EOS', logo: 'https://assets.coingecko.com/coins/images/738/small/eos-eos-logo.png', theme: 'bg-slate-400' },
+  AAVEUSDT: { name: 'Aave', logo: 'https://assets.coingecko.com/coins/images/12645/small/AAVE.png', theme: 'bg-purple-300' },
+};

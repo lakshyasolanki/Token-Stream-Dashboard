@@ -1,6 +1,12 @@
+import { TokenList } from "./components/TokenList";
+
 function App() {
   return (
-    <div></div>
+    <div className="min-h-screen bg-black/120 p-10 text-white">
+      <main className="">
+        <TokenList />
+      </main>
+    </div>
   )
 }
 
